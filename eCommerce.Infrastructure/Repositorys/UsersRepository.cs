@@ -1,4 +1,3 @@
-using AutoMapper;
 using Dapper;
 using eCommerce.Core.Entities;
 using eCommerce.Core.RepositoryContracts;
@@ -19,8 +18,6 @@ class UsersRepository : IUsersRepository
     {
         var check=await GetUserByEmailAsync(user.Email!);
         if(check is not null)return null;
-
-        user.UserID = Guid.NewGuid();
 
         const string sql =
              """

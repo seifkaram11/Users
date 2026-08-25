@@ -12,9 +12,6 @@
           "Dapper": "2.1.79",
           "FluentValidation.AspNetCore": "11.3.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "10.0.11",
-          "Microsoft.Extensions.Configuration": "10.0.11",
-          "Microsoft.Extensions.Configuration.Json": "10.0.11",
-          "Microsoft.Extensions.Configuration.UserSecrets": "10.0.11",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.11",
           "Microsoft.Extensions.Identity.Core": "10.0.11",
           "System.IdentityModel.Tokens.Jwt": "8.22.0"
@@ -149,49 +146,6 @@
           }
         }
       },
-      "Microsoft.Extensions.Configuration.FileExtensions/10.0.11": {
-        "dependencies": {
-          "Microsoft.Extensions.Configuration": "10.0.11",
-          "Microsoft.Extensions.Configuration.Abstractions": "10.0.11",
-          "Microsoft.Extensions.FileProviders.Abstractions": "10.0.11",
-          "Microsoft.Extensions.FileProviders.Physical": "10.0.11",
-          "Microsoft.Extensions.Primitives": "10.0.11"
-        },
-        "runtime": {
-          "lib/net10.0/Microsoft.Extensions.Configuration.FileExtensions.dll": {
-            "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.1126.37416"
-          }
-        }
-      },
-      "Microsoft.Extensions.Configuration.Json/10.0.11": {
-        "dependencies": {
-          "Microsoft.Extensions.Configuration": "10.0.11",
-          "Microsoft.Extensions.Configuration.Abstractions": "10.0.11",
-          "Microsoft.Extensions.Configuration.FileExtensions": "10.0.11",
-          "Microsoft.Extensions.FileProviders.Abstractions": "10.0.11"
-        },
-        "runtime": {
-          "lib/net10.0/Microsoft.Extensions.Configuration.Json.dll": {
-            "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.1126.37416"
-          }
-        }
-      },
-      "Microsoft.Extensions.Configuration.UserSecrets/10.0.11": {
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "10.0.11",
-          "Microsoft.Extensions.Configuration.Json": "10.0.11",
-          "Microsoft.Extensions.FileProviders.Abstractions": "10.0.11",
-          "Microsoft.Extensions.FileProviders.Physical": "10.0.11"
-        },
-        "runtime": {
-          "lib/net10.0/Microsoft.Extensions.Configuration.UserSecrets.dll": {
-            "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.1126.37416"
-          }
-        }
-      },
       "Microsoft.Extensions.DependencyInjection/10.0.11": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.11"
@@ -231,38 +185,6 @@
         },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.Diagnostics.Abstractions.dll": {
-            "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.1126.37416"
-          }
-        }
-      },
-      "Microsoft.Extensions.FileProviders.Abstractions/10.0.11": {
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "10.0.11"
-        },
-        "runtime": {
-          "lib/net10.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
-            "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.1126.37416"
-          }
-        }
-      },
-      "Microsoft.Extensions.FileProviders.Physical/10.0.11": {
-        "dependencies": {
-          "Microsoft.Extensions.FileProviders.Abstractions": "10.0.11",
-          "Microsoft.Extensions.FileSystemGlobbing": "10.0.11",
-          "Microsoft.Extensions.Primitives": "10.0.11"
-        },
-        "runtime": {
-          "lib/net10.0/Microsoft.Extensions.FileProviders.Physical.dll": {
-            "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.1126.37416"
-          }
-        }
-      },
-      "Microsoft.Extensions.FileSystemGlobbing/10.0.11": {
-        "runtime": {
-          "lib/net10.0/Microsoft.Extensions.FileSystemGlobbing.dll": {
             "assemblyVersion": "10.0.0.0",
             "fileVersion": "10.0.1126.37416"
           }
@@ -511,27 +433,6 @@
       "path": "microsoft.extensions.configuration.binder/10.0.11",
       "hashPath": "microsoft.extensions.configuration.binder.10.0.11.nupkg.sha512"
     },
-    "Microsoft.Extensions.Configuration.FileExtensions/10.0.11": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-mDW7KVFB05M6jiRUyaZiOMWhS31n5HlSZwoYctHAZAucD4sMDJ70IxOmkGDt6RpstchD+keWBjhdzcMpSkWvWQ==",
-      "path": "microsoft.extensions.configuration.fileextensions/10.0.11",
-      "hashPath": "microsoft.extensions.configuration.fileextensions.10.0.11.nupkg.sha512"
-    },
-    "Microsoft.Extensions.Configuration.Json/10.0.11": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-nSPrT8U/cNoB4coqkmnanAMK9PsL7lsjG+LLUKEwHRFwS6E78b8S1wdv/y88EOxBhasWov1rLd7RTHmmsYPOLg==",
-      "path": "microsoft.extensions.configuration.json/10.0.11",
-      "hashPath": "microsoft.extensions.configuration.json.10.0.11.nupkg.sha512"
-    },
-    "Microsoft.Extensions.Configuration.UserSecrets/10.0.11": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-BRliLdUowglV8GS+J1G/QsSofCJYYFg3U8QZx0ACRn+a91az/Qnpy+h6PyHS94WgV2TSazX5D/cuuk6wnCJatw==",
-      "path": "microsoft.extensions.configuration.usersecrets/10.0.11",
-      "hashPath": "microsoft.extensions.configuration.usersecrets.10.0.11.nupkg.sha512"
-    },
     "Microsoft.Extensions.DependencyInjection/10.0.11": {
       "type": "package",
       "serviceable": true,
@@ -559,27 +460,6 @@
       "sha512": "sha512-se7Kx8QpJEt+nf26L4qIVAofGTDr1wbexxsh/Fm3Xc04xUkqUXK06KUS7FLwSQYSjqb7q9n+T7MEcXYBhI1Y5g==",
       "path": "microsoft.extensions.diagnostics.abstractions/10.0.11",
       "hashPath": "microsoft.extensions.diagnostics.abstractions.10.0.11.nupkg.sha512"
-    },
-    "Microsoft.Extensions.FileProviders.Abstractions/10.0.11": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-JOjac6SQQgZmdmB8WGEw61/7siqMZoWJMkmq2p1goJGxqI59lO6oB4bOl0jNsbaPBdYy5Mlkb+6U7T4+CjnD8Q==",
-      "path": "microsoft.extensions.fileproviders.abstractions/10.0.11",
-      "hashPath": "microsoft.extensions.fileproviders.abstractions.10.0.11.nupkg.sha512"
-    },
-    "Microsoft.Extensions.FileProviders.Physical/10.0.11": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Tq/UqMaczePv9yWwSsJZRgKtgA46djVR5xHj/lZBCueQ3ag8f9v5mu0EdhrNx7tXxNk+Y9OurG2oKuSKINjr0A==",
-      "path": "microsoft.extensions.fileproviders.physical/10.0.11",
-      "hashPath": "microsoft.extensions.fileproviders.physical.10.0.11.nupkg.sha512"
-    },
-    "Microsoft.Extensions.FileSystemGlobbing/10.0.11": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-2i6rtW/B5rCnWCnhdmWWEmaM9O0HD0zsPY9eRqa++y4tclI3Uw8zvGbBvhY/LjAdtf8gUHhUPcAWj3DRlWMXmQ==",
-      "path": "microsoft.extensions.filesystemglobbing/10.0.11",
-      "hashPath": "microsoft.extensions.filesystemglobbing.10.0.11.nupkg.sha512"
     },
     "Microsoft.Extensions.Identity.Core/10.0.11": {
       "type": "package",

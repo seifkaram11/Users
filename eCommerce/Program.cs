@@ -1,6 +1,7 @@
 using System.Text;
 using System.Text.Json.Serialization;
 using eCommerce.Core;
+using eCommerce.Core.Configuration;
 using eCommerce.Core.Mapping;
 using eCommerce.Infrastructure;
 using FluentValidation.AspNetCore;
@@ -13,6 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
 builder.Services.AddAutoMapper(cfg=>{},typeof(RegisterRequestMappingProfile).Assembly);
+
+builder.Services.Configure<JWTConfiguration>(builder.Configuration.GetSection("Auth"));
 
 builder.Services.AddCore();
 builder.Services.AddInfrastructure();
@@ -48,17 +51,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
-            ValidIssuer = builder.Configuration["AppSettings:Issuer"],
+            ValidIssuer = builder.Configuration["Auth:Issuer"],
 
             ValidateAudience = true,
-            ValidAudience = builder.Configuration["AppSettings:Audience"],
+            ValidAudience = builder.Configuration["Auth:Audience"],
 
             ValidateLifetime = true,
 
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(
-                    builder.Configuration["AppSettings:Token"]!))
+                    builder.Configuration["Auth:Token"]!))
         };
     });
 

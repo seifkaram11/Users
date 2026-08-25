@@ -8,10 +8,12 @@ namespace eCommerce.Controller;
 public class AuthController:ControllerBase
 {
     IUsersService _usersService;
+    ILogger<AuthController> _logger;
 
-    public AuthController(IUsersService usersService)
+    public AuthController(IUsersService usersService, ILogger<AuthController> logger)
     {
         _usersService = usersService;
+        _logger = logger;
     }
 
     [HttpPost("Login")]
@@ -33,8 +35,8 @@ public class AuthController:ControllerBase
 
         var res=await _usersService.RegisterAsync(registerRequest);
 
-        if(res is null)return BadRequest();
-
+        if(res is null)return BadRequest("this email is already exist");
+        _logger.LogInformation($"{res.UserID}: {res.PersonName}({res.Gender})");
         return Ok(res);
     }
 

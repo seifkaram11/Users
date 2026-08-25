@@ -5,27 +5,28 @@ using eCommerce.Core.ServiceContracts;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.Extensions.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using eCommerce.Core.RepositoryContracts;
 using Microsoft.AspNetCore.Identity;
 using AutoMapper;
+using eCommerce.Core.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace eCommerce.Core.Services;
 
 class AuthService : IAuthService
 {
-    IConfiguration _configuration;
     IUsersRepository _usersRepository;
     readonly IPasswordHasher<Users> _passwordHasher;
     IMapper _mapper;
+    JWTConfiguration _jWTConfiguration;
 
-    public AuthService(IConfiguration configuration, IUsersRepository usersRepository, IPasswordHasher<Users> passwordHasher, IMapper mapper)
+    public AuthService(IUsersRepository usersRepository, IPasswordHasher<Users> passwordHasher, IMapper mapper,IOptions<JWTConfiguration> jWTConfiguration)
     {
-        _configuration = configuration;
         _usersRepository = usersRepository;
         _passwordHasher = passwordHasher;
         _mapper = mapper;
+        _jWTConfiguration=jWTConfiguration.Value;
     }
 
     public async Task<TokenResponse?> LoginAsync(LoginRequest loginRequest)
@@ -84,15 +85,17 @@ class AuthService : IAuthService
     public async Task<AuthenticationResponse?> RegisterAsync(RegisterRequest register)
     {
         string refreshToken=GenerateRefreshToken();
-        Users user=new()
+        Users user=_mapper.Map<Users>(register);
+        user.UserID=Guid.NewGuid();
+        user.RefreshToken=refreshToken;
+        if(int.TryParse(_jWTConfiguration.ExpiryDays,out int days))
         {
-            UserID=Guid.NewGuid(),
-            Email= register.Email,
-            Name=register.PersonName,
-            RefreshTokenExpiryTime=DateTimeOffset.UtcNow.AddDays(3),
-            RefreshToken=refreshToken,
-            Gender=register.Gender.ToString()
-        };
+            user.RefreshTokenExpiryTime=DateTimeOffset.UtcNow.AddDays(days);
+        }
+        else
+        {
+            user.RefreshTokenExpiryTime=DateTimeOffset.UtcNow.AddDays(2);
+        }
         var res=_mapper.Map<AuthenticationResponse>(user);
 
         user.PasswordHash=_passwordHasher.HashPassword(user,register.Password!);
@@ -112,13 +115,13 @@ class AuthService : IAuthService
             new Claim(ClaimTypes.Email, user.Email?? "empty@empty.com")
         };
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetValue<string>("Auth:Token")!));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jWTConfiguration.Token));
 
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);
 
         var token = new JwtSecurityToken(
-                issuer: _configuration.GetValue<string>("Auth:Issuer"),
-                audience: _configuration.GetValue<string>("Auth:Audience"),
+                issuer: _jWTConfiguration.Issuer,
+                audience: _jWTConfiguration.Audience,
                 claims: claims,
                 expires: DateTime.UtcNow.AddHours(1),
                 signingCredentials: creds

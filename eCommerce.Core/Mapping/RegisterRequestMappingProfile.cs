@@ -10,8 +10,8 @@ public class RegisterRequestMappingProfile:Profile
     {
         CreateMap<RegisterRequest,Users>()
         .ForMember(des=>des.Email,op=>op.MapFrom(src=>src.Email))
-        .ForMember(des=>des.PasswordHash,op=>op.MapFrom(src=>src.Password))
         .ForMember(des=>des.Name,op=>op.MapFrom(src=>src.PersonName))
-        .ForMember(des=>des.Gender,op=>op.MapFrom(src=>src.Gender.ToString()));
+        .ForMember(des=>des.Gender,op=>op.MapFrom(src=>src.Gender.ToString()))
+        .ForMember(des=>des.PasswordHash,op=>op.Ignore());
     }
 }

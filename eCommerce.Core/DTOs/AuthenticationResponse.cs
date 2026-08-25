@@ -2,17 +2,16 @@ namespace eCommerce.Core.DTOs;
 
 public class AuthenticationResponse
 {
-  public Guid UserID;
-  public string? Email;
-  public string? PersonName;
-  public string? Gender;
-  public string? RefreshToken;//*
-  public string? AccsesToken;//*
-  public DateTimeOffset RefreshTokenExpiryTime;//*
-  public bool Success;//*
+  public Guid UserID{get;set;}
+  public string? Email{get;set;}
+  public string? PersonName{get;set;}
+  public string? Gender{get;set;}
+  public string? RefreshToken{get;set;}//*
+  public string? AccsesToken{get;set;}//*
+  public DateTimeOffset RefreshTokenExpiryTime{get;set;}//*
+  public bool Success{get;set;}//*
   public AuthenticationResponse() : this(default, default, default,default, default, default,default, default)
-  {
-  }
+  {}
 
     public AuthenticationResponse(Guid userID, string? email, string? personName, string? gender, string? refreshToken, string? accsesToken, DateTimeOffset refreshTokenExpiryTime, bool success)
     {
