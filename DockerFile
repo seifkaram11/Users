@@ -1,0 +1,39 @@
+FROM mcr.microsoft.com/dotnet/sdk:10 AS build
+
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+
+COPY ["eCommerce/eCommerce.csproj", "eCommerce/"]
+COPY ["eCommerce.Core/eCommerce.Core.csproj", "eCommerce.Core/"]
+COPY ["eCommerce.Infrastructure/eCommerce.Infrastructure.csproj", "eCommerce.Infrastructure/"]
+
+RUN dotnet restore "eCommerce/eCommerce.csproj"
+
+COPY . .
+
+WORKDIR /src/eCommerce
+
+RUN dotnet build "eCommerce.csproj" \
+    -c $BUILD_CONFIGURATION \
+    -o /app/build
+
+
+FROM build AS publish
+
+ARG BUILD_CONFIGURATION=Release
+
+RUN dotnet publish "eCommerce.csproj" \
+    -c $BUILD_CONFIGURATION \
+    -o /app/publish \
+    /p:UseAppHost=false
+
+
+FROM mcr.microsoft.com/dotnet/aspnet:10 AS final
+
+WORKDIR /app
+
+EXPOSE 7252
+
+COPY --from=publish /app/publish .
+
+ENTRYPOINT ["dotnet", "Users.dll"]

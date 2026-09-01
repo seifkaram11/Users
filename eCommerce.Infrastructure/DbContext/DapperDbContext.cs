@@ -14,7 +14,7 @@ class DapperDbContext
     {
         _configuration = configuration;
         string? connString=_configuration.GetConnectionString("POSTGRES");
-
+        
         _connection=new NpgsqlConnection(connString);
     }
 

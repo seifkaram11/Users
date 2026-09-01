@@ -732,7 +732,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/eCommerce/eCommerce.csproj",
-        "projectName": "eCommerce",
+        "projectName": "Users",
         "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/eCommerce/eCommerce.csproj",
         "packagesPath": "/home/seifel-dinkaram/.nuget/packages/",
         "outputPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/eCommerce/obj/",
