@@ -3,17 +3,17 @@ FROM mcr.microsoft.com/dotnet/sdk:10 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-COPY ["eCommerce/eCommerce.csproj", "eCommerce/"]
-COPY ["eCommerce.Core/eCommerce.Core.csproj", "eCommerce.Core/"]
-COPY ["eCommerce.Infrastructure/eCommerce.Infrastructure.csproj", "eCommerce.Infrastructure/"]
+COPY ["API/API.csproj", "API/"]
+COPY ["Core/Core.csproj", "Core/"]
+COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]
 
-RUN dotnet restore "eCommerce/eCommerce.csproj"
+RUN dotnet restore "API/API.csproj"
 
 COPY . .
 
-WORKDIR /src/eCommerce
+WORKDIR /src/API
 
-RUN dotnet build "eCommerce.csproj" \
+RUN dotnet build "API.csproj" \
     -c $BUILD_CONFIGURATION \
     -o /app/build
 
@@ -22,7 +22,7 @@ FROM build AS publish
 
 ARG BUILD_CONFIGURATION=Release
 
-RUN dotnet publish "eCommerce.csproj" \
+RUN dotnet publish "API.csproj" \
     -c $BUILD_CONFIGURATION \
     -o /app/publish \
     /p:UseAppHost=false
@@ -36,4 +36,4 @@ EXPOSE 7252
 
 COPY --from=publish /app/publish .
 
-ENTRYPOINT ["dotnet", "Users.dll"]
+ENTRYPOINT ["dotnet", "API.dll"]

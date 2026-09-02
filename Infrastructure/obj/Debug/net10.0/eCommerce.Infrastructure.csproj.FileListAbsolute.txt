@@ -1,0 +1,16 @@
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/bin/Debug/net10.0/eCommerce.Infrastructure.deps.json
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/bin/Debug/net10.0/eCommerce.Infrastructure.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/bin/Debug/net10.0/eCommerce.Infrastructure.pdb
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/bin/Debug/net10.0/eCommerce.Core.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/bin/Debug/net10.0/eCommerce.Core.pdb
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/obj/Debug/net10.0/eCommerce.Infrastructure.csproj.AssemblyReference.cache
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/obj/Debug/net10.0/eCommerce.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/obj/Debug/net10.0/eCommerce.Infrastructure.AssemblyInfoInputs.cache
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/obj/Debug/net10.0/eCommerce.Infrastructure.AssemblyInfo.cs
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/obj/Debug/net10.0/eCommerce.Infrastructure.csproj.CoreCompileInputs.cache
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/obj/Debug/net10.0/eCommerc.0C272DDA.Up2Date
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/obj/Debug/net10.0/eCommerce.Infrastructure.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/obj/Debug/net10.0/refint/eCommerce.Infrastructure.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/obj/Debug/net10.0/eCommerce.Infrastructure.pdb
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/obj/Debug/net10.0/ref/eCommerce.Infrastructure.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce.Infrastructure/obj/Debug/net10.0/eCommerce.Infrastructure.sourcelink.json
