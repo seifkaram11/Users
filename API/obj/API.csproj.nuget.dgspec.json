@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/API/API.csproj": {}
+    "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/API/API.csproj": {}
   },
   "projects": {
-    "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/API/API.csproj": {
+    "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/API/API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/API/API.csproj",
+        "projectUniqueName": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/API/API.csproj",
         "projectName": "Users",
-        "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/API/API.csproj",
+        "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/API/API.csproj",
         "packagesPath": "/home/seifel-dinkaram/.nuget/packages/",
-        "outputPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/API/obj/",
+        "outputPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/seifel-dinkaram/.nuget/NuGet/NuGet.Config"
@@ -27,11 +27,11 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Core/Core.csproj": {
-                "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Core/Core.csproj"
+              "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Core/Core.csproj": {
+                "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Core/Core.csproj"
               },
-              "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Infrastructure/Infrastructure.csproj": {
-                "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Infrastructure/Infrastructure.csproj"
+              "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Infrastructure/Infrastructure.csproj": {
+                "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Infrastructure/Infrastructure.csproj"
               }
             }
           }
@@ -498,14 +498,14 @@
         }
       }
     },
-    "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Core/Core.csproj": {
+    "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Core/Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Core/Core.csproj",
+        "projectUniqueName": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Core/Core.csproj",
         "projectName": "Core",
-        "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Core/Core.csproj",
+        "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Core/Core.csproj",
         "packagesPath": "/home/seifel-dinkaram/.nuget/packages/",
-        "outputPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Core/obj/",
+        "outputPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/seifel-dinkaram/.nuget/NuGet/NuGet.Config"
@@ -862,14 +862,14 @@
         }
       }
     },
-    "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Infrastructure/Infrastructure.csproj": {
+    "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Infrastructure/Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Infrastructure/Infrastructure.csproj",
+        "projectUniqueName": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Infrastructure/Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Infrastructure/Infrastructure.csproj",
+        "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Infrastructure/Infrastructure.csproj",
         "packagesPath": "/home/seifel-dinkaram/.nuget/packages/",
-        "outputPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Infrastructure/obj/",
+        "outputPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/seifel-dinkaram/.nuget/NuGet/NuGet.Config"
@@ -885,8 +885,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Core/Core.csproj": {
-                "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Core/Core.csproj"
+              "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Core/Core.csproj": {
+                "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Core/Core.csproj"
               }
             }
           }

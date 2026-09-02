@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "q9MxZoTJEkU=",
+  "dgSpecHash": "xwiYYAMiTU0=",
   "success": true,
-  "projectFilePath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/eCommerce-user/Infrastructure/Infrastructure.csproj",
+  "projectFilePath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Users/Infrastructure/Infrastructure.csproj",
   "expectedPackageFiles": [
     "/home/seifel-dinkaram/.nuget/packages/automapper/16.2.0/automapper.16.2.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/dapper/2.1.79/dapper.2.1.79.nupkg.sha512",
