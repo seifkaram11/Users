@@ -1,8 +1,8 @@
 using AutoMapper;
-using eCommerce.Core.DTOs;
-using eCommerce.Core.Entities;
+using Core.DTOs;
+using Core.Entities;
 
-namespace eCommerce.Core.Mapping;
+namespace Core.Mapping;
 
 public class ApplicationUserMappingProfile : Profile
 {

@@ -1,7 +1,7 @@
-using eCommerce.Core.DTOs;
+using Core.DTOs;
 using FluentValidation;
 
-namespace eCommerce.Core.Validators;
+namespace Core.Validators;
 
 class LoginRequestValidator :AbstractValidator<RegisterRequest>
 {

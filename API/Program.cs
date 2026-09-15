@@ -1,13 +1,14 @@
 using System.Text;
 using System.Text.Json.Serialization;
-using eCommerce.Core;
-using eCommerce.Core.Configuration;
-using eCommerce.Core.Mapping;
-using eCommerce.Infrastructure;
+using Core;
+using Core.Configuration;
+using Core.Mapping;
+using Infrastructure;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using middlewares;
+using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +28,25 @@ builder.Services.ConfigureHttpJsonOptions(opt =>{opt.SerializerOptions.Converter
 builder.Services.AddFluentValidationAutoValidation();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Enter your JWT token"
+    });
+
+    options.AddSecurityRequirement(document =>
+        new OpenApiSecurityRequirement
+        {
+            [new OpenApiSecuritySchemeReference("Bearer", document)] = []
+        });
+});
 
 var allowedOrigins =builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
 

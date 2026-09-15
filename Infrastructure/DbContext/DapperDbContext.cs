@@ -2,9 +2,9 @@ using System.Data;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 
-namespace eCommerce.Infrastructure.DbContext;
+namespace Infrastructure.DbContext;
 
-class DapperDbContext
+public class DapperDbContext
 {
 
     IConfiguration _configuration;
@@ -14,7 +14,7 @@ class DapperDbContext
     {
         _configuration = configuration;
         string? connString=_configuration.GetConnectionString("POSTGRES");
-        
+
         _connection=new NpgsqlConnection(connString);
     }
 

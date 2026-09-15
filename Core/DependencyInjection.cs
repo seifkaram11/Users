@@ -1,12 +1,12 @@
-using eCommerce.Core.Entities;
-using eCommerce.Core.ServiceContracts;
-using eCommerce.Core.Services;
-using eCommerce.Core.Validators;
+using Core.Entities;
+using Core.ServiceContracts;
+using Core.Services;
+using Core.Validators;
 using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace eCommerce.Core;
+namespace Core;
 
 public static class DependencyInjection
 {
@@ -14,6 +14,7 @@ public static class DependencyInjection
     {
         services.AddScoped<IUsersService,UsersService>();
         services.AddScoped<IAuthService,AuthService>();
+        services.AddScoped<IRolesService,RolesService>();
         services.AddScoped<IPasswordHasher<Users>,PasswordHasher<Users>>();
         services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
         return services;

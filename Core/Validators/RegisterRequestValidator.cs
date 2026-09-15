@@ -1,7 +1,7 @@
-using eCommerce.Core.DTOs;
+using Core.DTOs;
 using FluentValidation;
 
-namespace eCommerce.Core.Validators;
+namespace Core.Validators;
 
 class RegisterRequestValidator:AbstractValidator<RegisterRequest>
 {
@@ -19,6 +19,6 @@ class RegisterRequestValidator:AbstractValidator<RegisterRequest>
         .Length(1, 50).WithMessage("Person Name should be 1 to 50 characters long");
 
         RuleFor(_=>_.Gender)
-        .IsInEnum().WithMessage("invalid valiue");
+        .IsInEnum().WithMessage("invalid value");
     }
 }

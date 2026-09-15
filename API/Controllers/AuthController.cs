@@ -1,18 +1,18 @@
-using eCommerce.Core.DTOs;
-using eCommerce.Core.ServiceContracts;
+using Core.DTOs;
+using Core.ServiceContracts;
 using Microsoft.AspNetCore.Mvc;
-namespace eCommerce.Controller;
+namespace Core.Controllers;
 
 [ApiController]
 [Route("api/1/Auth")]
 public class AuthController:ControllerBase
 {
-    IUsersService _usersService;
+    IAuthService _authService;
     ILogger<AuthController> _logger;
 
-    public AuthController(IUsersService usersService, ILogger<AuthController> logger)
+    public AuthController(IAuthService authService, ILogger<AuthController> logger)
     {
-        _usersService = usersService;
+        _authService = authService;
         _logger = logger;
     }
 
@@ -21,7 +21,7 @@ public class AuthController:ControllerBase
     {
         if(request is null)return BadRequest("Invalid request");
 
-        var res=await _usersService.LoginAsync(request);
+        var res=await _authService.LoginAsync(request);
 
         if (res is null)return ValidationProblem();
 
@@ -33,7 +33,7 @@ public class AuthController:ControllerBase
     {
         if(registerRequest is null)return BadRequest("Invalid request");
 
-        var res=await _usersService.RegisterAsync(registerRequest);
+        var res=await _authService.RegisterAsync(registerRequest);
 
         if(res is null)return BadRequest("this email is already exist");
         _logger.LogInformation($"{res.UserID}: {res.PersonName}({res.Gender})");
@@ -45,7 +45,7 @@ public class AuthController:ControllerBase
     {
         if(request is null)return BadRequest("Invalid request");
 
-        var res=await _usersService.RefreshTokensAsync(request);
+        var res=await _authService.RefreshTokensAsync(request);
 
         if (res is null)return ValidationProblem();
 

@@ -1,11 +1,18 @@
-using eCommerce.Core.DTOs;
-using eCommerce.Core.Entities;
+using Core.DTOs;
+using Core.Entities;
+using Core.Enum;
 
-namespace eCommerce.Core.ServiceContracts;
+namespace Core.ServiceContracts;
 
 public interface IUsersService
 {
-    Task<TokenResponse?> LoginAsync(LoginRequest loginRequest);
-    Task<AuthenticationResponse?> RegisterAsync(RegisterRequest registerRequest);
-    Task<TokenResponse?> RefreshTokensAsync(RefreshTokenRequestDto request);
+    Task<IEnumerable<UserResponse>> GetAllUsersAsync();
+    Task<IEnumerable<UserResponse>> GetUsersByConditionAsync(
+    Func<Users,bool> func,
+    int? pageNumber, int? pageSize,
+    SortedType? sortedType, SortBy? sortBy);
+    Task<bool> UpdateUserAsync(Guid userId, UpdateUserRequest user);
+    Task<bool> DeleteUserAsync(Guid userId);
+    Task<UserResponse?> CreateUserAsync(AddUserRequest AddUserRequest);
+    Task<bool> AddRoleAsync(AddRoleToUserRequest role);
 }

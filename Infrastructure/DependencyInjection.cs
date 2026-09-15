@@ -1,9 +1,9 @@
-using eCommerce.Core.RepositoryContracts;
-using eCommerce.Infrastructure.DbContext;
-using eCommerce.Infrastructure.Repository;
+using Core.RepositoryContracts;
+using Infrastructure.DbContext;
+using Infrastructure.Repository;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace eCommerce.Infrastructure;
+namespace Infrastructure;
 
 public static class DependencyInjection
 {
@@ -11,6 +11,7 @@ public static class DependencyInjection
     {
         services.AddScoped<IUsersRepository,UsersRepository>();
         services.AddScoped<DapperDbContext>();
+        services.AddScoped<IRolesRepository,RolesRepository>();
         return services;
     }
 }

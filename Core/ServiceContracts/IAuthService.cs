@@ -1,6 +1,6 @@
-using eCommerce.Core.DTOs;
+using Core.DTOs;
 
-namespace eCommerce.Core.ServiceContracts;
+namespace Core.ServiceContracts;
 
 public interface IAuthService
 {

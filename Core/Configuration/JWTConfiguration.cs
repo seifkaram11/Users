@@ -1,4 +1,4 @@
-namespace eCommerce.Core.Configuration;
+namespace Core.Configuration;
 
 public class JWTConfiguration
 {

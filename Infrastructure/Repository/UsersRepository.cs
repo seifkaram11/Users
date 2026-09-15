@@ -1,11 +1,11 @@
 using Dapper;
-using eCommerce.Core.Entities;
-using eCommerce.Core.RepositoryContracts;
-using eCommerce.Infrastructure.DbContext;
+using Core.Entities;
+using Core.RepositoryContracts;
+using Infrastructure.DbContext;
 
-namespace eCommerce.Infrastructure.Repository;
+namespace Infrastructure.Repository;
 
-class UsersRepository : IUsersRepository
+public class UsersRepository : IUsersRepository
 {
     DapperDbContext _dbContext;
 
@@ -42,9 +42,47 @@ class UsersRepository : IUsersRepository
             """;
         var conn=_dbContext.connection;
         conn.Open();
-        var res = await _dbContext.connection.ExecuteAsync(sql, user);
+        var res = await conn.ExecuteAsync(sql, user);
         conn.Close();
         return res > 0 ? user : null;
+    }
+
+    public async Task<bool> DeleteUserAsync(Guid userId)
+    {
+        const string sql_ =
+            """
+            DELETE FROM "UserRoles"
+            WHERE "UserID" = @UserID;
+            """;
+
+        var conn_=_dbContext.connection;
+        conn_.Open();
+        var res_ = await conn_.ExecuteAsync(sql_, new { UserID = userId });
+        conn_.Close();
+        const string sql =
+            """
+            DELETE FROM "Users"
+            WHERE "UserID" = @UserID;
+            """;
+        var conn=_dbContext.connection;
+        conn.Open();
+        var res = await conn.ExecuteAsync(sql, new { UserID = userId });
+        conn.Close();
+        return res > 0;
+    }
+
+    public async Task<IEnumerable<Users>> GetAllUsersAsync()
+    {
+        const string sql =
+            """
+            SELECT *
+            FROM "Users";
+            """;
+        var conn=_dbContext.connection;
+        conn.Open();
+        var res = await conn.QueryAsync<Users>(sql);
+        conn.Close();
+        return res;
     }
 
     public async Task<Users?> GetUserByEmailAsync(string email)
@@ -58,7 +96,7 @@ class UsersRepository : IUsersRepository
 
         var conn=_dbContext.connection;
         conn.Open();
-        var res=await _dbContext.connection
+        var res=await conn
             .QueryFirstOrDefaultAsync<Users>(
                 sql,
                 new { Email = email });
@@ -77,7 +115,7 @@ class UsersRepository : IUsersRepository
 
         var conn=_dbContext.connection;
         conn.Open();
-        var res=await _dbContext.connection
+        var res=await conn
             .QueryFirstOrDefaultAsync<Users>(
                 sql,
                 new { UserID = userID });
@@ -102,8 +140,22 @@ class UsersRepository : IUsersRepository
 
         var conn=_dbContext.connection;
         conn.Open();
-        var res = await _dbContext.connection.ExecuteAsync(sql, user);
+        var res = await conn.ExecuteAsync(sql, user);
         conn.Close();
         return res == 1 ? user : null;
+    }
+
+    public async Task<bool> AddRoleToUserAsync(Guid userId, Guid roleId)
+    {
+        const string sql=
+        """
+        INSERT INTO "UserRoles"("RoleId","UserID")
+        VALUES(@RoleId,@UserID);
+        """;
+        var conn=_dbContext.connection;
+        conn.Open();
+        var res = await conn.ExecuteAsync(sql, new { RoleId = roleId, UserID = userId });
+        conn.Close();
+        return res == 1;
     }
 }

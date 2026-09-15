@@ -1,18 +1,18 @@
 using System.Security.Cryptography;
-using eCommerce.Core.DTOs;
-using eCommerce.Core.Entities;
-using eCommerce.Core.ServiceContracts;
+using Core.DTOs;
+using Core.Entities;
+using Core.ServiceContracts;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
-using eCommerce.Core.RepositoryContracts;
+using Core.RepositoryContracts;
 using Microsoft.AspNetCore.Identity;
 using AutoMapper;
-using eCommerce.Core.Configuration;
+using Core.Configuration;
 using Microsoft.Extensions.Options;
 
-namespace eCommerce.Core.Services;
+namespace Core.Services;
 
 class AuthService : IAuthService
 {
@@ -20,13 +20,15 @@ class AuthService : IAuthService
     readonly IPasswordHasher<Users> _passwordHasher;
     IMapper _mapper;
     JWTConfiguration _jWTConfiguration;
+    IRolesRepository _rolesRepository;
 
-    public AuthService(IUsersRepository usersRepository, IPasswordHasher<Users> passwordHasher, IMapper mapper,IOptions<JWTConfiguration> jWTConfiguration)
+    public AuthService(IUsersRepository usersRepository, IPasswordHasher<Users> passwordHasher, IMapper mapper, IOptions<JWTConfiguration> jWTConfiguration, IRolesRepository rolesRepository)
     {
         _usersRepository = usersRepository;
         _passwordHasher = passwordHasher;
         _mapper = mapper;
-        _jWTConfiguration=jWTConfiguration.Value;
+        _jWTConfiguration = jWTConfiguration.Value;
+        _rolesRepository = rolesRepository;
     }
 
     public async Task<TokenResponse?> LoginAsync(LoginRequest loginRequest)
@@ -97,16 +99,17 @@ class AuthService : IAuthService
             user.RefreshTokenExpiryTime=DateTimeOffset.UtcNow.AddDays(2);
         }
         var res=_mapper.Map<AuthenticationResponse>(user);
-
         user.PasswordHash=_passwordHasher.HashPassword(user,register.Password!);
         var x=await _usersRepository.AddUserAsync(user);
         if(x is null)return null;
         res.Success=true;
+        await _usersRepository.AddRoleToUserAsync(res.UserID, new Guid("418d04f1-3b33-4146-9801-de7e373b5d73"));
         return res;
     }
 
     async Task<string> createToken(Users user)
     {
+        var roles=await _rolesRepository.GetRolesByUserIdAsync(user.UserID);
         var claims=new List<Claim>()
         {
             new Claim(ClaimTypes.Name, user.Name??""),
@@ -114,6 +117,10 @@ class AuthService : IAuthService
             new Claim(ClaimTypes.Gender, user.Gender??""),
             new Claim(ClaimTypes.Email, user.Email?? "empty@empty.com")
         };
+        foreach(var role in roles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role.RoleName));
+        }
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jWTConfiguration.Token));
 

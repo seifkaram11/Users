@@ -1,4 +1,4 @@
-namespace eCommerce.Core.DTOs;
+namespace Core.DTOs;
 
 public record LoginRequest(
   string? Email,
