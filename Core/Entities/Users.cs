@@ -8,6 +8,7 @@ public class Users
   public string? Name { get; set; }
   public string? Gender { get; set; }
   public string? RefreshToken{get;set;}
+  public string? GoogleId{get;set;}
   public DateTimeOffset? RefreshTokenExpiryTime{get;set;}
   public IEnumerable<Roles> Roles { get; set; }=new List<Roles>();
 }

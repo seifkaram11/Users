@@ -21,14 +21,16 @@ class AuthService : IAuthService
     IMapper _mapper;
     JWTConfiguration _jWTConfiguration;
     IRolesRepository _rolesRepository;
+    IUsersService _usersService;
 
-    public AuthService(IUsersRepository usersRepository, IPasswordHasher<Users> passwordHasher, IMapper mapper, IOptions<JWTConfiguration> jWTConfiguration, IRolesRepository rolesRepository)
+    public AuthService(IUsersRepository usersRepository, IPasswordHasher<Users> passwordHasher, IMapper mapper, IOptions<JWTConfiguration> jWTConfiguration, IRolesRepository rolesRepository, IUsersService usersService)
     {
         _usersRepository = usersRepository;
         _passwordHasher = passwordHasher;
         _mapper = mapper;
         _jWTConfiguration = jWTConfiguration.Value;
         _rolesRepository = rolesRepository;
+        _usersService = usersService;
     }
 
     public async Task<TokenResponse?> LoginAsync(LoginRequest loginRequest)
@@ -45,7 +47,7 @@ class AuthService : IAuthService
 
     }
 
-    async Task<TokenResponse> GenreateTokenResponseAsync(Users user)
+    public async Task<TokenResponse> GenreateTokenResponseAsync(Users user)
     {
         return new TokenResponse
         {
@@ -137,5 +139,24 @@ class AuthService : IAuthService
         var res= new JwtSecurityTokenHandler().WriteToken(token);
 
         return res;
+    }
+
+    public async Task<Users> FindOrCreateUserByGoogleId(string googleId, string email)
+    {
+        var user=await _usersRepository.GetUserByEmailAsync(email);
+
+        if (user == null)
+        {
+            var newUser = new Users {
+                UserID=Guid.NewGuid(),
+                GoogleId = googleId,
+                Email =  email
+            };
+            await _usersRepository.AddUserAsync(user);
+            AddRoleToUserRequest request= new(){RoleId=new Guid("418d04f1-3b33-4146-9801-de7e373b5d73"),UserId=newUser!.UserID};
+            await _usersService.AddRoleAsync(request);
+            return newUser;
+        }
+        return user;
     }
 }

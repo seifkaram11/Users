@@ -4,7 +4,7 @@ namespace Core.RepositoryContracts;
 
 public interface IUsersRepository
 {
-    Task<Users?> AddUserAsync(Users user);
+    Task<Users?> AddUserAsync(Users? user);
     Task<IEnumerable<Users>> GetAllUsersAsync();
     Task<Users?> UpdateUserAsync(Users user);
     Task<bool> DeleteUserAsync(Guid userId);

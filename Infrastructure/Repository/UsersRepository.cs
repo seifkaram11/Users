@@ -14,8 +14,9 @@ public class UsersRepository : IUsersRepository
         _dbContext = dbContext;
     }
 
-    public async Task<Users?> AddUserAsync(Users user)
+    public async Task<Users?> AddUserAsync(Users? user)
     {
+        if(user is null)return null;
         var check=await GetUserByEmailAsync(user.Email!);
         if(check is not null)return null;
 
